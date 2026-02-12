@@ -30,7 +30,6 @@ sudo pacman -S --needed rust cargo git base-devel systemd
 
 # Optional: Install lm_sensors for finding CPU temperature path
 read -p "Install lm_sensors to help find CPU temperature sensors? (y/N) " -n 1 -r
-echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     sudo pacman -S --needed lm_sensors
     echo "Run 'sensors' to find your CPU temperature device path"
