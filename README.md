@@ -199,7 +199,7 @@ See [README-ARCH.md](README-ARCH.md#troubleshooting) for detailed troubleshootin
 
 - **Original Author**: [nishtahir](https://github.com/nishtahir/antec-flux-pro-display)
 - **Inspiration**: [AKoskovich](https://github.com/AKoskovich/antec_flux_pro_display_service)
-- **Arch Adaptation**: Your contributions welcome!
+- **Arch Adaptation**: Vibe coded by yours truly (Go figure)
 
 ## 📄 License
 
