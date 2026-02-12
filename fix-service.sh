@@ -148,3 +148,5 @@ printf "  Config: /etc/af-pro-display/config.toml\n"
 printf "  CPU Sensor: %s\n" "$CPU_SENSOR"
 printf "\nTo enable autostart: sudo systemctl enable af-pro-display\n"
 printf "To view logs: journalctl -u af-pro-display -f\n"
+
+hi
