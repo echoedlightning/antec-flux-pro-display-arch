@@ -64,13 +64,30 @@ fi
 echo "Suggested CPU sensors:"
 echo "====================="
 
-# Look for common CPU sensor names
+# Look for common CPU sensor names and highlight them
 for sensor in "${sensors[@]}"; do
     hwmon_dir=$(dirname "$sensor")
     if [ -f "$hwmon_dir/name" ]; then
         name=$(cat "$hwmon_dir/name")
+        # Check for label
+        label_file="${sensor%_input}_label"
+        label=""
+        if [ -f "$label_file" ]; then
+            label=$(cat "$label_file")
+        fi
+        
         case "$name" in
-            k10temp|coretemp|zenpower|tctl|tdie)
+            k10temp)
+                if [ "$label" = "Tctl" ]; then
+                    echo "✓✓ RECOMMENDED: $sensor ($name - $label) ← USE THIS FOR AMD"
+                else
+                    echo "✓ $sensor ($name${label:+ - $label})"
+                fi
+                ;;
+            coretemp)
+                echo "✓ RECOMMENDED: $sensor ($name) ← USE THIS FOR INTEL"
+                ;;
+            zenpower)
                 echo "✓ $sensor ($name)"
                 ;;
         esac
