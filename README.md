@@ -215,13 +215,6 @@ Contributions are welcome! This is an Arch-specific fork. For general applicatio
 3. Test on Arch Linux
 4. Submit a pull request
 
-### Potential Improvements:
-- [ ] Submit to AUR
-- [ ] Add systemd timer for periodic sensor recalibration
-- [ ] Support for additional GPU vendors (AMD via sysfs)
-- [ ] Configuration validation tool
-- [ ] Animated display modes
-- [ ] Multi-sensor aggregation
 
 ## 🎉 Getting Started
 
