@@ -5,7 +5,7 @@ An Arch Linux adaptation of the [antec-flux-pro-display](https://github.com/nish
 ## 🚀 Quick Start
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR-USERNAME/antec-flux-pro-display-arch/main/install-arch.sh | bash
+curl -fsSL https://raw.githubusercontent.com/echoedlightning/Antec-Flux-Pro-Display-Arch-Install/main/install-arch.sh | bash
 ```
 
 After installation:
@@ -36,10 +36,10 @@ This repository contains everything needed to run antec-flux-pro-display on Arch
 ### Option 1: Quick Install Script
 ```bash
 # One-line install
-curl -fsSL https://raw.githubusercontent.com/YOUR-USERNAME/antec-flux-pro-display-arch/main/install-arch.sh | bash
+curl -fsSL https://raw.githubusercontent.com/echoedlightning/Antec-Flux-Pro-Display-Arch-Install/main/install-arch.sh | bash
 
 # Or download and inspect first
-wget https://raw.githubusercontent.com/YOUR-USERNAME/antec-flux-pro-display-arch/main/install-arch.sh
+wget https://raw.githubusercontent.com/echoedlightning/Antec-Flux-Pro-Display-Arch-Install/main/install-arch.sh
 chmod +x install-arch.sh
 ./install-arch.sh
 ```
@@ -47,7 +47,7 @@ chmod +x install-arch.sh
 ### Option 2: PKGBUILD (AUR-style)
 ```bash
 # Download files
-git clone https://github.com/YOUR-USERNAME/antec-flux-pro-display-arch.git
+git clone https://github.com/echoedlightning/Antec-Flux-Pro-Display-Arch-Install.git
 cd antec-flux-pro-display-arch
 
 # Build and install
