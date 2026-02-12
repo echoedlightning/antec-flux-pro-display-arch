@@ -1,0 +1,4 @@
+# Antec Flux Pro Display udev rules
+# This rule grants the plugdev group access to the Antec Flux Pro display device
+
+SUBSYSTEM=="usb", ATTRS{idVendor}=="2022", ATTRS{idProduct}=="0522", MODE="0660", GROUP="plugdev", TAG+="uaccess"

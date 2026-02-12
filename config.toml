@@ -1,0 +1,13 @@
+# Antec Flux Pro Display Configuration
+
+# Path to CPU temperature sensor
+# On Arch Linux, this is typically found under /sys/class/hwmon/
+# Use 'sensors' command from lm_sensors package to find your specific path
+# Common locations:
+#   - AMD CPUs: /sys/class/hwmon/hwmon*/temp1_input (k10temp)
+#   - Intel CPUs: /sys/class/hwmon/hwmon*/temp1_input (coretemp)
+cpu_device = "/sys/class/hwmon/hwmon0/temp1_input"
+
+# Polling interval in milliseconds
+# How often to update the display with new temperature readings
+polling_interval = 200

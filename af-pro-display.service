@@ -1,0 +1,23 @@
+[Unit]
+Description=Antec Flux Pro Display Service
+After=network.target systemd-udev-settle.service
+Wants=systemd-udev-settle.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/af-pro-display --config /etc/af-pro-display/config.toml
+Restart=on-failure
+RestartSec=5s
+User=root
+StandardOutput=journal
+StandardError=journal
+
+# Security hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/sys/class/hwmon
+
+[Install]
+WantedBy=multi-user.target

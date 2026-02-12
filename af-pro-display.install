@@ -1,0 +1,86 @@
+post_install() {
+    echo ""
+    echo "==> Antec Flux Pro Display installed successfully!"
+    echo ""
+    echo "==> Post-installation steps:"
+    echo "    1. Add your user to the plugdev group:"
+    echo "       sudo usermod -aG plugdev \$USER"
+    echo ""
+    echo "    2. Log out and back in for group changes to take effect"
+    echo ""
+    echo "    3. Configure your CPU temperature sensor in:"
+    echo "       /etc/af-pro-display/config.toml"
+    echo ""
+    echo "    4. Find your CPU sensor with:"
+    echo "       sensors (requires lm_sensors package)"
+    echo "       or: find /sys/class/hwmon -name 'temp*_input'"
+    echo ""
+    echo "    5. Start the service:"
+    echo "       sudo systemctl start af-pro-display"
+    echo ""
+    echo "    6. Enable autostart:"
+    echo "       sudo systemctl enable af-pro-display"
+    echo ""
+    
+    # Create plugdev group if it doesn't exist
+    if ! getent group plugdev > /dev/null 2>&1; then
+        groupadd -r plugdev
+        echo "==> Created plugdev group"
+    fi
+    
+    # Reload udev rules
+    udevadm control --reload-rules
+    udevadm trigger
+    
+    # Reload systemd
+    systemctl daemon-reload
+}
+
+post_upgrade() {
+    echo ""
+    echo "==> Antec Flux Pro Display upgraded"
+    echo "==> Restarting service..."
+    
+    if systemctl is-active --quiet af-pro-display; then
+        systemctl restart af-pro-display
+        echo "==> Service restarted"
+    else
+        echo "==> Service is not running. Start it with:"
+        echo "    sudo systemctl start af-pro-display"
+    fi
+    
+    # Reload udev rules
+    udevadm control --reload-rules
+    udevadm trigger
+    
+    # Reload systemd
+    systemctl daemon-reload
+}
+
+pre_remove() {
+    # Stop and disable service before removal
+    if systemctl is-active --quiet af-pro-display; then
+        systemctl stop af-pro-display
+    fi
+    
+    if systemctl is-enabled --quiet af-pro-display 2>/dev/null; then
+        systemctl disable af-pro-display
+    fi
+}
+
+post_remove() {
+    echo ""
+    echo "==> Antec Flux Pro Display removed"
+    echo "==> Configuration files remain at: /etc/af-pro-display/"
+    echo "==> To completely remove: sudo rm -rf /etc/af-pro-display"
+    echo ""
+    echo "==> You may also want to remove your user from plugdev group:"
+    echo "    sudo gpasswd -d \$USER plugdev"
+    
+    # Reload systemd
+    systemctl daemon-reload
+    
+    # Reload udev
+    udevadm control --reload-rules
+    udevadm trigger
+}
